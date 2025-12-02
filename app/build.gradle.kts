@@ -1,4 +1,4 @@
-import java.until.Properties
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -8,8 +8,9 @@ plugins {
 val properties = Properties()
 properties.load(rootProject.file("local.properties").inputStream())
 
+val NAVER_CLIENT_ID = properties.getProperty("NAVER_CLIENT_ID")
+val NAVER_CLIENT_SECRET = properties.getProperty("NAVER_CLIENT_SECRET")
 
-val NAVER_CLIENT_ID = properties.getProperty("naver_client_id")
 
 android {
     namespace = "com.psw.nearby_restaurant_app"
@@ -47,7 +48,8 @@ android {
     }
 
     buildFeatures {
-        compose = true
+        buildConfig = true
+        viewBinding = true
     }
 }
 
@@ -57,9 +59,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.fragment)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("com.naver.maps:map-sdk:3.17.0")
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+
+    implementation("com.naver.maps:map-sdk:3.23.0")
 }
