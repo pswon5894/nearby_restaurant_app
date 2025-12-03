@@ -9,8 +9,6 @@ val properties = Properties()
 properties.load(rootProject.file("local.properties").inputStream())
 
 val NAVER_CLIENT_ID = properties.getProperty("NAVER_CLIENT_ID")
-val NAVER_CLIENT_SECRET = properties.getProperty("NAVER_CLIENT_SECRET")
-
 
 android {
     namespace = "com.psw.nearby_restaurant_app"
